@@ -1,4 +1,4 @@
-﻿Feature: UI Test
+﻿Feature: Google
 	As A web user 
 	I Want Google to Work
 	So that I am able to search the web
@@ -7,11 +7,6 @@
 Scenario: Google Homepage Displays
 	Given The User has Navigated to https://www.google.com
 	Then The Google Homepage will be displayed
-
-@WikipediaHomePage
-Scenario: Wikipedia Homepage Displays
-	Given The User has Navigated to https://www.wikipedia.org/
-	Then The Wikipedia Homepage will be displayed
 
 @GoogleResultsPage
 Scenario: Search result page title
