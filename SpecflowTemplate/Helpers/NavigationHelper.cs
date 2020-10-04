@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using SpecflowTemplate.Contexts;
 using System;
 using System.Net.NetworkInformation;
+using System.Threading;
 
 namespace SpecflowTemplate
 {
@@ -18,6 +19,7 @@ namespace SpecflowTemplate
         public void GoToURL(string url)
         {
             Driver.Driver.Navigate().GoToUrl(url);
+            //Thread.Sleep(TimeSpan.FromSeconds(2));
         }
 
         public string GetCurrentPageTitle()

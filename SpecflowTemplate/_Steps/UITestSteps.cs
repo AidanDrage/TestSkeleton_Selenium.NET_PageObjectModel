@@ -70,6 +70,14 @@ namespace SpecflowTemplate.Steps
             pagetitle.Should().Be($"{searchTerm} - Google Search", 
                 "Because the title of the search results page should reflect the search term");
         }
+
+        [Then(@"Then The Wikipedia Homepage will list (.*) as one of the top 10 languages")]
+        public void ThenThenTheWikipediaHomepageWillListEnglishAsOneOfTheTopLanguages(string language)
+        {
+            _wikipediaLandingPage.GetTopLanguages().Should().Contain(
+                language, $"Because {language} should be listed on the home page as one of the top languages"
+                );           
+        }
         #endregion
     }
 }

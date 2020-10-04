@@ -7,3 +7,20 @@
 Scenario: Wikipedia Homepage Displays
 	Given The User has Navigated to https://www.wikipedia.org/
 	Then The Wikipedia Homepage will be displayed
+
+@WikipediaHomePage
+Scenario Outline: Wikipedia Homepage Lists Correct Languages
+    Given The User has Navigated to https://www.wikipedia.org/
+	Then Then The Wikipedia Homepage will list <Language> as one of the top 10 languages
+	Examples: 
+	| Language  |
+	| English   |
+	| 日本語    |
+	| Español   |
+	| Deutsch   |
+	| Русский   |
+	| Français  |
+	| Italiano  |
+	| 中文      |
+	| Português |
+	| Polski    |

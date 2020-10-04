@@ -52,7 +52,7 @@
           </li>
             <li class="m-r-10">
                 <a href="#">
-                    <span class="badge badge-primary">04/10/2020 14:30:49</span>
+                    <span class="badge badge-primary">04/10/2020 16:41:34</span>
                 </a>
             </li>
         </ul>
@@ -107,7 +107,7 @@
 											<i class="fa fa-exclamation-circle"></i>
 										</a>
 										<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a status="pass" class="dropdown-item" href="#"><span>Pass</span><span class="status success pull-right"></span></a>																																																																		<div class="dropdown-divider"></div>
+<a status="pass" class="dropdown-item" href="#"><span>Pass</span><span class="status success pull-right"></span></a>											<a status="fail" class="dropdown-item" href="#"><span>Fail</span><span class="status danger pull-right"></span></a>																																																							<div class="dropdown-divider"></div>
 											<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 										</ul>
 									</li>
@@ -115,25 +115,25 @@
                             </div>
                             <div class="test-list-wrapper scrollable">
                                 <ul class="test-list-item">
-										<li class="test-item" status="pass" author="" device="" tag=""> 
-											<div class="status-avatar pass-bg">
-												<i class="fa fa-check text-white"></i>
+										<li class="test-item" status="fail" author="" device="" tag=""> 
+											<div class="status-avatar fail-bg">
+												<i class="fa fa-times text-white"></i>
 											</div>
 											<div class="open-test">
 												<div class="test-detail"> 
-													<p class="name">UI Test</p> 
-													<p class="duration text-sm">0h:0m:3s+690ms</p> 
-													<span class="datetime">14:30:49 PM</span>
+													<p class="name">Google</p> 
+													<p class="duration text-sm">0h:0m:5s+595ms</p> 
+													<span class="datetime">16:41:34 PM</span>
 												</div>
 											</div>
 											<div class="test-contents d-none">
 												<div class="detail-head">
 													<div class="p-v-10 d-inline-block">	
 														<div class="info">
-															<h5 class="test-status text-pass">UI Test</h5>
-															<span class='badge badge-success'>04/10/2020 14:30:49</span>
-															<span class='badge badge-danger'>04/10/2020 14:30:53</span>
-															<span class='badge badge-default'>0h:0m:3s+690ms</span>
+															<h5 class="test-status text-fail">Google</h5>
+															<span class='badge badge-success'>04/10/2020 16:41:34</span>
+															<span class='badge badge-danger'>04/10/2020 16:41:39</span>
+															<span class='badge badge-default'>0h:0m:5s+595ms</span>
 														</div>
 																											</div>
 												</div>
@@ -142,9 +142,9 @@
 	<div class="card">
 		<div class="card-header" role="tab">
 			<h5 class="card-title pl-3">
-				<div class="node">Wikipedia Homepage Displays</div>
-				<div class="status-avatar float-left pass-bg">
-					<i class="fa fa-check text-white"></i>
+				<div class="node">Search result page title</div>
+				<div class="status-avatar float-left fail-bg">
+					<i class="fa fa-times text-white"></i>
 				</div>
 			</h5>
 		</div>
@@ -154,16 +154,26 @@
 								<span class="alert-icon pass-bg">
 									<i class="fa fa-check text-white"></i>
 								</span>
-								<span>Given: The User has Navigated to https://www.wikipedia.org/</span>
+								<span>Given: The Google Homepage is Displayed</span>
 							</div>
 			<div class="details">Passed</div>
-							<div class="d-flex align-items-center justify-content-start then" title="">
-								<span class="alert-icon pass-bg">
-									<i class="fa fa-check text-white"></i>
+							<div class="d-flex align-items-center justify-content-start when" title="">
+								<span class="alert-icon fail-bg">
+									<i class="fa fa-times text-white"></i>
 								</span>
-								<span>Then: The Wikipedia Homepage will be displayed</span>
+								<span>When: The User performs a search for Hello, World!</span>
 							</div>
-			<div class="details">Passed</div>
+			<div class="details">at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.InternalExecute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Execute(String commandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at SpecflowTemplate.Pages.GoogleHomePage.PerformSearch(String searchTerm) in D:\GIT\SpecflowTemplate\SpecflowTemplate\Pages\GoogleHomePage.cs:line 26
+   at SpecflowTemplate.Steps.UITestSteps.WhenTheUserPerformsASearchFor(String search) in D:\GIT\SpecflowTemplate\SpecflowTemplate\_Steps\UITestSteps.cs:line 43
+   at lambda_method(Closure , IContextManager , String )
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan& duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance)</div>
 					</div>
 				</div>
 	</div>
