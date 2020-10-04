@@ -10,13 +10,16 @@ namespace SpecflowTemplate.Steps
     {
         private readonly NavigationHelper _navigation;
         private readonly DataContext _context;
-        private readonly HomePage _homePage;
+        private readonly GoogleHomePage _googleHomePage;
+        private readonly WikipediaLandingPage _wikipediaLandingPage;
 
-        public UITestSteps(DataContext context, HomePage home, NavigationHelper navigationHelper)
+        public UITestSteps(DataContext context, GoogleHomePage googleHome, NavigationHelper navigationHelper, 
+            WikipediaLandingPage wikipediaLandingPage)
         {
             _navigation = navigationHelper;
             _context = context;
-            _homePage = home;
+            _googleHomePage = googleHome;
+            _wikipediaLandingPage = wikipediaLandingPage;
         }
 
         #region Givens
@@ -37,7 +40,7 @@ namespace SpecflowTemplate.Steps
         [When(@"The User performs a search for (.*)")]
         public void WhenTheUserPerformsASearchFor(string search)
         {
-            _homePage.PerformSearch(search);
+            _googleHomePage.PerformSearch(search);
             _context.ScenarioDataContext.Add("Search Term", search);
         }
         #endregion
@@ -47,8 +50,15 @@ namespace SpecflowTemplate.Steps
         public void ThenTheGoogleHomepageWillBeDisplayed()
         {
 
-            _navigation.WaitUntillVisible(_homePage.SearchBox, 10);
-            _homePage.GoogleLogo.Should().NotBeNull("Beacuse the google logo should be displayed");
+            _navigation.WaitUntillVisible(_googleHomePage.SearchBox, 10);
+            _googleHomePage.GoogleLogo.Should().NotBeNull("Beacuse the google logo should be displayed");
+        }
+
+        [Then(@"The Wikipedia Homepage will be displayed")]
+        public void ThenTheWikipediaHomepageWillBeDisplayed()
+        {
+            _navigation.WaitUntillVisible(_wikipediaLandingPage.WikipideaGlobeLogo, 10);
+            _wikipediaLandingPage.WikipediaHeader.Should().NotBeNull("Beacuse the wikipedia logo should be displayed");
         }
 
         [Then(@"The Title of the search results page will reflect the search term")]

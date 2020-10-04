@@ -3,12 +3,12 @@ using SpecflowTemplate.Contexts;
 
 namespace SpecflowTemplate.Pages
 {
-    public class HomePage
+    public class GoogleHomePage
     {
 
         private DriverContext _driver;
 
-        public HomePage(DriverContext driver)
+        public GoogleHomePage(DriverContext driver)
         {
             _driver = driver;
         }
