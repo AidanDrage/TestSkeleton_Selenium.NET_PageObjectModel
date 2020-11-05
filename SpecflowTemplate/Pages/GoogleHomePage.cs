@@ -3,23 +3,13 @@ using SpecflowTemplate.Contexts;
 
 namespace SpecflowTemplate.Pages
 {
-    public class GoogleHomePage
+    public class GoogleHomePage : BasePage
     {
+        public GoogleHomePage(DriverContext driver) : base (driver) {}
 
-        private DriverContext _driver;
+        public IWebElement GoogleLogo => Driver.FindElement(By.Id("hplogo"));
 
-        public GoogleHomePage(DriverContext driver)
-        {
-            _driver = driver;
-        }
-
-        //Page factory is deprecated
-        //[FindsBy(How = How.Id, Using = "hplogo")]
-        //private IWebElement logo { get; set; }
-
-        public IWebElement GoogleLogo => _driver.Driver.FindElement(By.Id("hplogo"));
-
-        public IWebElement SearchBox => _driver.Driver.FindElement(By.XPath("//input[@class=\"gLFyf gsfi\"]"));
+        public IWebElement SearchBox => Driver.FindElement(By.XPath("//input[@class=\"gLFyf gsfi\"]"));
 
         public void PerformSearch(string searchTerm)
         {
@@ -27,6 +17,5 @@ namespace SpecflowTemplate.Pages
             SearchBox.SendKeys(searchTerm);
             SearchBox.SendKeys(Keys.Return);
         }
-
     }
 }

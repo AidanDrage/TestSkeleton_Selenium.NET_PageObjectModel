@@ -2,26 +2,20 @@
 using SpecflowTemplate.Contexts;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
 
 namespace SpecflowTemplate.Pages
 {
-    public class WikipediaLandingPage
+    public class WikipediaLandingPage : BasePage
     {
-        private DriverContext _driver;
+        public WikipediaLandingPage(DriverContext driver) : base(driver) { }
 
-        public WikipediaLandingPage(DriverContext driver)
-        {
-            _driver = driver;
-        }
+        public IWebElement WikipediaHeader => Driver.FindElement(By.ClassName("central-textlogo-wrapper"));
 
-        public IWebElement WikipediaHeader => _driver.Driver.FindElement(By.ClassName("central-textlogo-wrapper"));
+        public IWebElement WikipideaGlobeLogo => Driver.FindElement(By.ClassName("central-featured-logo"));
 
-        public IWebElement WikipideaGlobeLogo => _driver.Driver.FindElement(By.ClassName("central-featured-logo"));
+        public IWebElement LanguageDropdown => Driver.FindElement(By.ClassName("js-lang-list-button"));
 
-        public IWebElement LanguageDropdown => _driver.Driver.FindElement(By.ClassName("js-lang-list-button"));
-
-        public ReadOnlyCollection<IWebElement> Languages => _driver.Driver.FindElements(By.XPath("//*[@class='central-featured']/div"));
+        public ReadOnlyCollection<IWebElement> Languages => Driver.FindElements(By.XPath("//*[@class='central-featured']/div"));
 
         public List<string> GetTopLanguages()
         {
