@@ -1,13 +1,23 @@
 ﻿using OpenQA.Selenium;
-using SpecflowTemplate.Contexts;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SpecflowTemplate.Pages
 {
-    internal class WikipediaLandingPage : BasePage
+    internal interface IWikipediaLandingPage
     {
-        public WikipediaLandingPage(DriverContext driver) : base(driver) { }
+        IWebElement LanguageDropdown { get; }
+        ReadOnlyCollection<IWebElement> Languages { get; }
+        IWebElement SearchBox { get; }
+        IWebElement WikipediaHeader { get; }
+        IWebElement WikipideaGlobeLogo { get; }
+
+        List<string> GetTopLanguages();
+    }
+
+    internal class WikipediaLandingPage : BasePage, IWikipediaLandingPage
+    {
+        public WikipediaLandingPage(IWebDriver driver) : base(driver) { }
 
         public IWebElement WikipediaHeader => Driver.FindElement(By.ClassName("central-textlogo-wrapper"));
 
@@ -30,6 +40,6 @@ namespace SpecflowTemplate.Pages
             }
 
             return LanguageText;
-    }
+        }
     }
 }

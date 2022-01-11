@@ -8,13 +8,12 @@ namespace SpecflowTemplate.Steps
     [Binding]
     internal class UITestSteps
     {
-        private readonly NavigationHelper _navigation;
-        private readonly DataContext _context;
-        private readonly WikipediaLandingPage _wikipediaLandingPage;
-        private readonly WikipediaArticlePage _wikipediaArticlePage;
+        private readonly INavigationHelper _navigation;
+        private readonly IDataContext _context;
+        private readonly IWikipediaLandingPage _wikipediaLandingPage;
+        private readonly IWikipediaArticlePage _wikipediaArticlePage;
 
-        public UITestSteps(DataContext context, NavigationHelper navigationHelper, 
-            WikipediaLandingPage wikipediaLandingPage, WikipediaArticlePage wikipediaArticlePage)
+        public UITestSteps(IDataContext context, INavigationHelper navigationHelper, IWikipediaLandingPage wikipediaLandingPage, IWikipediaArticlePage wikipediaArticlePage)
         {
             _navigation = navigationHelper;
             _context = context;
@@ -34,7 +33,6 @@ namespace SpecflowTemplate.Steps
         [When(@"The User Searches for ""(.*)""")]
         public void WhenTheUserSearchesFor(string searchTerm)
         {
-            _context.ScenarioDataContext.Add("ArticleSearchedFor", searchTerm);
             _context.ArticleSearchedFor = searchTerm;
             _wikipediaLandingPage.SearchBox.SendKeys(searchTerm);
             _wikipediaLandingPage.SearchBox.Submit();
