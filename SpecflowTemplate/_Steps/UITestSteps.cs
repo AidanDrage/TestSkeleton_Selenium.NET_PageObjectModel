@@ -6,20 +6,20 @@ using TechTalk.SpecFlow;
 namespace SpecflowTemplate.Steps
 {
     [Binding]
-    public class UITestSteps
+    internal class UITestSteps
     {
         private readonly NavigationHelper _navigation;
         private readonly DataContext _context;
-        private readonly GoogleHomePage _googleHomePage;
         private readonly WikipediaLandingPage _wikipediaLandingPage;
+        private readonly WikipediaArticlePage _wikipediaArticlePage;
 
-        public UITestSteps(DataContext context, GoogleHomePage googleHome, NavigationHelper navigationHelper, 
-            WikipediaLandingPage wikipediaLandingPage)
+        public UITestSteps(DataContext context, NavigationHelper navigationHelper, 
+            WikipediaLandingPage wikipediaLandingPage, WikipediaArticlePage wikipediaArticlePage)
         {
             _navigation = navigationHelper;
             _context = context;
-            _googleHomePage = googleHome;
             _wikipediaLandingPage = wikipediaLandingPage;
+            _wikipediaArticlePage = wikipediaArticlePage;
         }
 
         #region Givens
@@ -28,47 +28,25 @@ namespace SpecflowTemplate.Steps
         {
             _navigation.GoToURL(url);
         }
-
-        [Given(@"The Google Homepage is Displayed")]
-        public void GivenTheGoogleHomepageIsDisplayed()
-        {
-            _navigation.GoToURL("https://www.google.com");
-        }
         #endregion
 
         #region Whens
-        [When(@"The User performs a search for (.*)")]
-        public void WhenTheUserPerformsASearchFor(string search)
+        [When(@"The User Searches for ""(.*)""")]
+        public void WhenTheUserSearchesFor(string searchTerm)
         {
-            _googleHomePage.PerformSearch(search);
-            _context.ScenarioDataContext.Add("Search Term", search);
+            _context.ScenarioDataContext.Add("ArticleSearchedFor", searchTerm);
+            _context.ArticleSearchedFor = searchTerm;
+            _wikipediaLandingPage.SearchBox.SendKeys(searchTerm);
+            _wikipediaLandingPage.SearchBox.Submit();
         }
         #endregion
 
         #region Thens
-        [Then(@"The Google Homepage will be displayed")]
-        public void ThenTheGoogleHomepageWillBeDisplayed()
-        {
-
-            _navigation.WaitUntillVisible(_googleHomePage.SearchBox, 10);
-            _googleHomePage.GoogleLogo.Should().NotBeNull("Beacuse the google logo should be displayed");
-        }
-
         [Then(@"The Wikipedia Homepage will be displayed")]
         public void ThenTheWikipediaHomepageWillBeDisplayed()
         {
             _navigation.WaitUntillVisible(_wikipediaLandingPage.WikipideaGlobeLogo, 10);
             _wikipediaLandingPage.WikipediaHeader.Should().NotBeNull("Beacuse the wikipedia logo should be displayed");
-        }
-
-        [Then(@"The Title of the search results page will reflect the search term")]
-        public void EachResultWillContainTheSearchTerm()
-        {
-            _context.ScenarioDataContext.TryGetValue("Search Term", out dynamic searchTerm);
-            string pagetitle = _navigation.GetCurrentPageTitle();
-
-            pagetitle.Should().Be($"{searchTerm} - Google Search", 
-                "Because the title of the search results page should reflect the search term");
         }
 
         [Then(@"Then The Wikipedia Homepage will list (.*) as one of the top 10 languages")]
@@ -77,6 +55,12 @@ namespace SpecflowTemplate.Steps
             _wikipediaLandingPage.GetTopLanguages().Should().Contain(
                 language, $"Because {language} should be listed on the home page as one of the top languages"
                 );           
+        }
+
+        [Then(@"The Wikipedia article that the user search for will be displayed")]
+        public void ThenTheWikipediaArticleForPlanetEarthWillDisplay()
+        {
+            _wikipediaArticlePage.ArticleHeader.Text.Should().Be(_context.ArticleSearchedFor, "Because the title of the article should be the same as the search term");
         }
         #endregion
     }

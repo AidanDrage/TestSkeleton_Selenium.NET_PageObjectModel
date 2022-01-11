@@ -14,13 +14,7 @@ namespace SpecflowTemplate.Helpers
 
         public void Initialise()
         {
-            //Setting the chrome bianry location manually because my PC stopped finsing it after a windows reinstall, investigate
-            ChromeOptions chromeoptions = new ChromeOptions();
-            chromeoptions.BinaryLocation = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
-
-            //Call driver factory instead
-            //Have to set driver location manually because of .NET Core, investigate for a workaround
-            _driverContext.Driver = new ChromeDriver("D:\\GIT\\SpecflowTemplate\\SpecflowTemplate\\bin\\Debug\\netcoreapp2.2", chromeoptions);
+            _driverContext.Driver = new ChromeDriver();
         }
 
         public void Destroy()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SpecflowTemplate.Contexts
 {
-    public class DataContext
+    internal class DataContext
     {
         public Dictionary<String, dynamic> ScenarioDataContext { get; set; }
 
@@ -11,5 +11,7 @@ namespace SpecflowTemplate.Contexts
         {
             ScenarioDataContext = new Dictionary<string, dynamic>();
         }
+
+        public string ArticleSearchedFor { get; set; }
     }
 }

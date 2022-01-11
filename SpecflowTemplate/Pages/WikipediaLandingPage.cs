@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace SpecflowTemplate.Pages
 {
-    public class WikipediaLandingPage : BasePage
+    internal class WikipediaLandingPage : BasePage
     {
         public WikipediaLandingPage(DriverContext driver) : base(driver) { }
 
@@ -14,6 +14,8 @@ namespace SpecflowTemplate.Pages
         public IWebElement WikipideaGlobeLogo => Driver.FindElement(By.ClassName("central-featured-logo"));
 
         public IWebElement LanguageDropdown => Driver.FindElement(By.ClassName("js-lang-list-button"));
+
+        public IWebElement SearchBox => Driver.FindElement(By.CssSelector("input#searchInput"));
 
         public ReadOnlyCollection<IWebElement> Languages => Driver.FindElements(By.XPath("//*[@class='central-featured']/div"));
 

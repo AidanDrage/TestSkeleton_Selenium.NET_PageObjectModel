@@ -24,3 +24,9 @@ Scenario Outline: Wikipedia Homepage Lists Correct Languages
 	| 中文      |
 	| Português |
 	| Polski    |
+
+@WikipediaSearch
+Scenario: Wikipedia Search
+    Given The User has Navigated to https://www.wikipedia.org/
+	When The User Searches for "Earth"
+	Then The Wikipedia article that the user search for will be displayed
