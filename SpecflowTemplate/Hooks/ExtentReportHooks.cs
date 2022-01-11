@@ -29,7 +29,7 @@ namespace SpecflowTemplate.Hooks
             _feature = _extentReports.CreateTest<Feature>(featureContext.FeatureInfo.Title);
         }
 
-        [BeforeScenario]
+        [BeforeScenario(Order = 3)]
         private void BeforeScenario(ScenarioContext scenrioContext)
         {
             _scenarioContext = scenrioContext;

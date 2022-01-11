@@ -1,27 +1,19 @@
-﻿using OpenQA.Selenium.Chrome;
-using SpecflowTemplate.Contexts;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace SpecflowTemplate.Helpers
 {
-    public class DriverHelper
+    internal static class DriverHelper
     {
-        public DriverContext _driverContext;
-
-        public DriverHelper(DriverContext driverContext)
+        public static IWebDriver Initialise()
         {
-            _driverContext = driverContext;
+            return new ChromeDriver();
         }
 
-        public void Initialise()
+        public static void Destroy(IWebDriver driver)
         {
-            _driverContext.Driver = new ChromeDriver();
-        }
-
-        public void Destroy()
-        {
-            _driverContext.Driver.Close();
-            _driverContext.Driver.Dispose();
-            _driverContext.Driver = null;
+            driver.Close();
+            driver.Dispose();
         }
     }
 }

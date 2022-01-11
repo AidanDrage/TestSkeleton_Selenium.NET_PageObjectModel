@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using SpecflowTemplate.Contexts;
 
 namespace SpecflowTemplate.Pages
 {
@@ -7,7 +6,7 @@ namespace SpecflowTemplate.Pages
     {
         protected IWebDriver Driver;
 
-        public BasePage (DriverContext driver) { Driver = driver.Driver; }
+        public BasePage (IWebDriver driver) { Driver = driver; }
 
     }
 }

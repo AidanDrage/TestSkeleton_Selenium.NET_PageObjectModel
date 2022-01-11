@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SpecflowTemplate.Contexts
+﻿namespace SpecflowTemplate.Contexts
 {
-    internal class DataContext
+    internal interface IDataContext
     {
-        public Dictionary<String, dynamic> ScenarioDataContext { get; set; }
+        string ArticleSearchedFor { get; set; }
+    }
 
-        public DataContext()
-        {
-            ScenarioDataContext = new Dictionary<string, dynamic>();
-        }
-
+    internal class DataContext : IDataContext
+    {
         public string ArticleSearchedFor { get; set; }
     }
 }
