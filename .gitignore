@@ -402,4 +402,4 @@ docs/_build/*
 *.suo
 .suo
 *.testlog
-testoutput/*
+TestOutput/*
