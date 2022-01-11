@@ -402,4 +402,6 @@ docs/_build/*
 *.suo
 .suo
 *.testlog
-./TestOutput/*
+
+TestSkeleton_Selenium.NET_PageObjectModel/TestOutput
+.vscode
