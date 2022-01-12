@@ -1,10 +1,10 @@
-# Project Title
+# TestSkeleton_Selenium.NET_PageObjectModel
 
-Specflow/.NET Core example automated testing project
+A very basic skeleton Specflow/.NET Core example automated testing project using the page object model design pattern.
 
 ## Description
 
-An example project for automated testing built in .NET Core. Tests run against live google and wikipedia home pages
+An example project for automated testing built targeting .NET5. Tests run against live wikipedia.  
 
 ## Dependencies
 
@@ -29,5 +29,4 @@ Visual Studio Test Explorer (Ctrl+E, T).
 **Aidan Drage** - [Linkdin](https://www.linkedin.com/in/aidan-drage-9b4444189/)
 
 ## License
-
-N/A
+MIT - If this basic project skeleton could be of any use for you as a starting point I encourage you to crack on and use it.
